@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .nav-bar{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background-color: aquamarine;
+        }
+        .logo{
+            font-size: 24px;
+        }
+        .nav-links{
+            display: flex;
+            gap: 25px;
+
+        }
+        .nav-links a{
+            color: red;
+            font-size: 18px;
+        }
+        .nav-links a:hover{
+            color: black;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="logo">My Site</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+    <button id="change-btn">Color change</button>
+    <script>
+        let btn = document.querySelector("#change-btn");
+        let nav =document.querySelector(".nav-bar");
+
+        btn.addEventListener("click", function (){
+            nav.style.backgroundColor= "red";
+        });
+    </script>
+
+</body>
+</html>

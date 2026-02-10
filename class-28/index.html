@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <h3 id="greeting">Good Morning🌅 Everyone!!😊</h3>
+
+    <script>
+        
+        let newDiv = document.createElement("div");
+        newDiv.textContent = "Virat/Rohit - Who is better?"
+        document.body.appendChild(newDiv);
+
+        let heading = document.getElementById("greeting");
+        heading.textContent = "Good Afternoon🌇 Everyone!!😊";
+
+
+        let oldDiv = document.querySelector("div");
+        oldDiv.remove();
+    </script>
+</body>
+</html>

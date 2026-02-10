@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedam Cultural Club | Vedam School of Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+       
+        :root {
+            --apple-white: #f5f5f7;
+            --apple-black: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #d2d2d7;
+            --apple-blue: #0071e3;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --radius: 18px;
+        }
+
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.4;
+            font-weight: 400;
+            background-color: var(--apple-white);
+            color: var(--apple-black);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            letter-spacing: -0.028em;
+            line-height: 1.14286;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.47059;
+            color: var(--apple-gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--apple-blue);
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        /* Navigation - Apple Style */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(245, 245, 247, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0 22px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--apple-black);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo-icon {
+            margin-right: 8px;
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 32px;
+        }
+
+        .nav-links a {
+            font-size: 17px;
+            color: var(--apple-black);
+            font-weight: 400;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--apple-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--apple-blue);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 52px;
+            position: relative;
+            overflow: hidden;
+            color: white; /* Changed for better contrast against video */
+        }
+        
+        /* --- ✨ NEW: Video Background --- */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            object-fit: cover;
+        }
+
+        /* Dark overlay for text readability over video */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 22px;
+            animation: fadeUp 1.2s ease-out;
+            position: relative; /* Ensure content is above overlay */
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.05;
+        }
+
+        .hero p {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 32px;
+            color: rgba(255, 255, 255, 0.85); /* Lightened for better readability */
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        /* Apple-style Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 980px;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--apple-blue);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0077ED;
+            transform: scale(1.04);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white; /* Changed for better contrast */
+            border: 2px solid white; /* Changed for better contrast */
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: scale(1.04);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--apple-black);
+        }
+
+        .section-subtitle {
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--apple-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: var(--apple-black);
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+        }
+
+        .about-image {
+            height: 500px;
+            background: var(--gradient);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .about-image:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .event-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .event-image {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+            
+        }
+
+        .event-content {
+            padding: 24px;
+        }
+
+        .event-date {
+            color: var(--apple-blue);
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .event-title {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--apple-black);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: var(--gradient);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            /* Added for background images */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        /* --- ✨ Gallery Image Backgrounds --- */
+        .cultural-fest {
+            background-image: linear-gradient(rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7)), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819');
+        }
+        .dance-performance {
+            background-image: linear-gradient(rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7)), url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e');
+        }
+        .music-concert {
+            background-image: linear-gradient(rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7)), url('https://images.unsplash.com/photo-1583795310263-9a3756a6f446');
+        }
+        .art-workshop {
+            background-image: linear-gradient(rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7)), url('https://images.unsplash.com/photo-1513364776144-60967b0f800f');
+        }
+        .drama-night {
+            background-image: linear-gradient(rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7)), url('https://images.unsplash.com/photo-1608224538459-e1b9b0c25a58');
+        }
+        .traditional-day {
+            background-image: linear-gradient(rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7)), url('https://images.unsplash.com/photo-1605651202778-636e43871861');
+        }
+
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+        }
+
+        .contact-info h3 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: var(--apple-black);
+        }
+
+        .contact-details {
+            margin-top: 32px;
+        }
+
+        .contact-details p {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details strong {
+            min-width: 140px;
+            display: inline-block;
+            color: var(--apple-black);
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--apple-black);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--apple-light-gray);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 17px;
+            transition: var(--transition);
+            background-color: var(--apple-white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--apple-blue);
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--apple-black);
+            color: var(--apple-light-gray);
+            padding: 64px 0 32px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 48px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 24px;
+            font-size: 21px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--apple-light-gray);
+            font-size: 17px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--apple-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 15px;
+            color: var(--apple-gray);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 16px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 21px;
+            }
+            
+            .section-title {
+                font-size: 40px;
+            }
+            
+            .section-subtitle {
+                font-size: 21px;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <span class="nav-logo-icon"> <img src="./vedlogo.webp" alt="" height="35px"></span>
+            Vedam Cultural Club
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Join</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://videos.pexels.com/video-files/853874/853874-hd_1920_1080_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1>Welcome to Vedam's Cultural Club</h1>
+            <p>Where creativity meets innovation.</p>
+            <p>Celebrating every moment at Vedam School of Technology.</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Learn More</a>
+                <a href="#contact" class="btn btn-secondary">Join Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Our Club</h2>
+                <p class="section-subtitle">A vibrant community fostering creativity and cultural expression.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Celebrating Culture & Creativity</h3>
+                    <p>The Vedam Cultural Club is the heart of artistic expression at Vedam School of Technology. We provide a platform for students to explore, express, and excel in various talents among them.</p>
+                    <p>Our mission is to foster creativity, promote co-curricular activities, and provide opportunities for students to develop their talents in music, dance, drama, fine arts, and more.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1758550445803-2c4046a49437?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987" alt="Cultural Club Members" style="width:100%;height:100%;object-fit:cover;border-radius:18px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="section" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Events</h2>
+                <p class="section-subtitle">Experience the vibrant cultural life at Vedam.</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image" style="background-image:url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80');background-size:cover;background-position:center;display:flex;align-items:end;padding:16px;color:white;font-weight:bold;">
+                        Diwali celebration
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">11 October,2025</div>
+                        <h3 class="event-title">Annual Music Festival</h3>
+                        <p>Join us for a day filled with melodies from various genres. Solo and group performances welcome!</p>
+                        <a href="#contact" class="btn btn-primary" style="margin-top: 16px;">Register Now</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image" style="background-image:url('https://i.pinimg.com/736x/c0/7f/63/c07f63a94327774a350a0f5c757f89a8.jpg');background-size:cover;background-position:center;display:flex;align-items:end;padding:16px;color:white;font-weight:bold;">
+                        Dance Competition
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">To be announced</div>
+                        <h3 class="event-title">Inter-College Dance Battle</h3>
+                        <p>Show off your moves in solo or group categories. Multiple dance styles accepted.</p>
+                        <a href="#contact" class="btn btn-primary" style="margin-top: 16px;">Register Now</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image" style="background-image:url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80');background-size:cover;background-position:center;display:flex;align-items:end;padding:16px;color:white;font-weight:bold;">
+                        Art Exhibition
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">December 10, 2025</div>
+                        <h3 class="event-title">Student Art Exhibition</h3>
+                        <p>Display your artwork in our annual exhibition. All mediums welcome.</p>
+                        <a href="#contact" class="btn btn-primary" style="margin-top: 16px;">Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Gallery</h2>
+                <p class="section-subtitle">Moments from our cultural journey.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item cultural-fest">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=500&q=80" alt="Cultural Fest 2022" style="width:100%;height:100%;object-fit:cover;border-radius:18px;position:absolute;top:0;left:0;z-index:0;">
+                    <span style="position:relative;z-index:1;color:white;font-weight:bold;">Cultural Fest 2025</span>
+                </div>
+                <div class="gallery-item dance-performance">
+                    <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=500&q=80" alt="Dance Performance" style="width:100%;height:100%;object-fit:cover;border-radius:18px;position:absolute;top:0;left:0;z-index:0;">
+                    <span style="position:relative;z-index:1;color:white;font-weight:bold;">Dance Performance</span>
+                </div>
+                <div class="gallery-item music-concert">
+                    <img src="https://i.pinimg.com/736x/e5/2c/1f/e52c1f07e5eb2279968c8d4071f00744.jpg" alt="Music Concert" style="width:100%;height:100%;object-fit:cover;border-radius:18px;position:absolute;top:0;left:0;z-index:0;">
+                    <span style="position:relative;z-index:1;color:white;font-weight:bold;">Music Concert</span>
+                </div>
+                <div class="gallery-item art-workshop">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=500&q=80" alt="Art Workshop" style="width:100%;height:100%;object-fit:cover;border-radius:18px;position:absolute;top:0;left:0;z-index:0;">
+                    <span style="position:relative;z-index:1;color:white;font-weight:bold;">Art Workshop</span>
+                </div>
+                <div class="gallery-item drama-night">
+                    <img src="https://i.pinimg.com/736x/83/a8/18/83a818b55ec85bf53bea6a70e676efb7.jpg" alt="Drama Night" style="width:100%;height:100%;object-fit:cover;border-radius:18px;position:absolute;top:0;left:0;z-index:0;">
+                    <span style="position:relative;z-index:1;color:white;font-weight:bold;">Drama Night</span>
+                </div>
+                <div class="gallery-item traditional-day">
+                    <img src="https://i.pinimg.com/736x/59/07/12/590712beaf5acac6a01b70c3ea600910.jpg" alt="Traditional Day" style="width:100%;height:100%;object-fit:cover;border-radius:18px;position:absolute;top:0;left:0;z-index:0;">
+                    <span style="position:relative;z-index:1;color:white;font-weight:bold;">Traditional Day</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Join Our Club</h2>
+                <p class="section-subtitle">Become part of our creative community.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Ready to unleash your creativity? Join the Vedam Cultural Club today and be part of our vibrant community.</p>
+                    
+                    <div class="contact-details">
+                        <p><strong>Club Coordinator:</strong> Prof. Anjali Sharma</p>
+                        <p><strong>Email:</strong> culturalclub@vedam.edu</p>
+                        <p><strong>Phone:</strong> +91 98765 43210</p>
+                        <p><strong>Address:</strong> Vedam School of Technology, Cultural Club Office, Block C, 2nd Floor</p>
+                    </div>
+                    
+                    <h3 style="margin-top: 32px;">Club Meeting Times</h3>
+                    <div class="contact-details">
+                        <p><strong>General Meetings:</strong> Every Friday, 4:00 PM</p>
+                        <p><strong>Music Section:</strong> Mondays & Wednesdays, 5:00 PM</p>
+                        <p><strong>Dance Section:</strong> Tuesdays & Thursdays, 5:00 PM</p>
+                        <p><strong>Drama Section:</strong> Saturdays, 10:00 AM</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Registration Form</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department">
+                                <option value="">Select your department</option>
+                                <option value="cse">Computer Science</option>
+                                <option value="ece">Electronics & Communication</option>
+                                <option value="mech">Mechanical Engineering</option>
+                                <option value="civil">Civil Engineering</option>
+                                <option value="it">Information Technology</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Year of Study</label>
+                            <select id="year">
+                                <option value="">Select your year</option>
+                                <option value="1">First Year</option>
+                                <option value="2">Second Year</option>
+                                <option value="3">Third Year</option>
+                                <option value="4">Fourth Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Areas of Interest</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="music" name="interest" value="music">
+                                    <label for="music">Music</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="dance" name="interest" value="dance">
+                                    <label for="dance">Dance</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="drama" name="interest" value="drama">
+                                    <label for="drama">Drama/Theatre</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="art" name="interest" value="art">
+                                    <label for="art">Fine Arts</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="photography" name="interest" value="photography">
+                                    <label for="photography">Photography</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Any previous experience? (Optional)</label>
+                            <textarea id="message" rows="4" placeholder="Tell us about your experience in cultural activities"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Registration</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Vedam Cultural Club</h3>
+                    <p>Celebrating creativity and cultural diversity at Vedam School of Technology since 2015.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">i</a>
+                        <a href="#" class="social-link">y</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Join Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>Vedam School of Technology</li>
+                        <li>Cultural Club Office, Block C</li>
+                        <li>Email: culturalclub@vedam.edu</li>
+                        <li>Phone: +91 98765 43210</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Vedam Cultural Club | Vedam School of Technology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Set initial state
+            fadeElements.forEach(element => {
+                element.classList.remove('visible');
+            });
+            
+            // Check on scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Initial check
+            fadeInOnScroll();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays and Objects in Js</title>
+  </head>
+  <body>
+    <script>
+      //Arrays
+
+      let arr = [10, 20, 30];
+      console.log("Arrays", arr);
+
+      //Access Element
+
+      console.log(arr[1]);
+
+      let n = arr.length;
+      console.log(arr[n - 1]);
+
+      //Modify Arrays
+
+      arr.push(40);
+      console.log("After push", arr);
+
+      arr.pop();
+      console.log("After pop", arr);
+
+      arr.unshift(5);
+      console.log("After unshift", arr);
+
+      arr.shift();
+      console.log("After shift", arr);
+
+      //loop - Print all the Elements of an Array using a for loop
+
+      let num = [1, 2, 3, 4, 5];
+      for (let i = 0; i < num.length; i++) {
+        console.log(num[i]);
+      }
+
+      //Search
+
+      console.log("search" + num.indexOf(3));
+
+      //Objects
+
+      let student = {
+        name: "Krishna",
+        age: 18,
+        Phone: 8003000000,
+        greet: function () {
+          console.log("Hi, I'm" + this.name);
+        },
+      };
+
+      //Accessing values
+
+      console.log("Name : ", student.name); //dot notation
+      console.log("Phone : ", student["Phone"]); //bracket notation
+
+      //Adding properties
+
+      student.city = "Pune";
+      console.log("Updated object : ", student);
+    </script>
+  </body>
+</html>

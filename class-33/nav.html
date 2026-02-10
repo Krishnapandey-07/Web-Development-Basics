@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: aqua;
+            padding: 15px 40px;
+        }
+        .nav-links{
+            color: red;
+            display: flex;
+            gap: 20px;
+
+        }
+        .nav-links a:hover{
+            color: black;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MY PORTFOLIO</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Source</a>
+            <a href="#">Contact</a>
+            <button class="login">Login</button>
+            <button id="Register">Register</button>
+        </div>
+    </nav>
+    <script>
+        let count = 0;
+        let rgt = document.querySelector("#Register");
+        rgt.addEventListener('click',function(){
+            count++;
+        if(count%2 !=0){
+            rgt.textContent= "Registered";
+        }
+        else{
+            rgt.textContent = "Register Now";
+        }
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Notes App</title>
+</head>
+<body>
+
+<h1>Simple Notes App</h1>
+
+<input type="text" id="noteInput" placeholder="Write a note...">
+<button id="addbtn">Add</button>
+
+<ul id="notelist"></ul>
+
+<script>
+    //Select Element
+    let input = document.querySelector('#noteInput'); 
+    let addbtn = document.querySelector('#addbtn'); 
+    let notelist = document.querySelector('#notelist'); 
+
+    //Add note event
+    addbtn.addEventListener("click",function(){
+        //read input
+        const text = input.value.trim();
+
+
+        //empty note - alert 
+        if(text ===''){
+            alert("Notes can't be empty");
+        }
+
+
+        //create li
+        const li = document.createElement('li');
+        li.textContent = text;
+
+
+        //create delete btn
+        const delbtn = document.createElement("button");
+        delbtn.textContent = "delete";
+        delbtn.classList.add("delete");
+
+        delbtn.addEventListener("click" , ()=> {
+            li.remove();
+        })
+
+
+        //Append deletebtn to li 
+        li.appendChild(delbtn);
+
+
+        //Append li to list
+        notelist.appendChild(li);
+
+
+        //Clear input
+        input.value = "";
+    })
+</script>
+
+</body>
+</html>

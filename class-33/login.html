@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.container {
+  background-color: white;
+  padding: 30px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container form label {
+  font-size: 14px;
+}
+
+.container form input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px 0;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+.container button {
+  width: 100%;
+  padding: 10px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background: #444;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+  <h2>Login</h2>
+
+  <form>
+    <label>Username</label>
+    <input type="text" placeholder="Enter username">
+
+    <label>Password</label>
+    <input type="password" placeholder="Enter password">
+
+    <button type="submit">Login</button>
+  </form>
+</div>
+<script>
+  const btn = document.querySelector("button");
+
+  btn.addEventListener("click", function(e) {
+    e.preventDefault(); // stops form from refreshing page
+
+    alert("Login button clicked!");
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        body{
+            text-align: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>DOM Manipulation Demo </h2>
+    <p id="intro">Welcome to Javascript DOM!</p>
+
+    <script>
+        //find element
+        let introelement = document.getElementById("intro");
+
+        //text change
+        introElement.innerText = "Hello Students!"
+
+        //change background color
+        document.body.style.backgroundColor = "Lightblue"
+
+        let newPara = document.createElement("p");
+        newPara.innerText = "I was created using JavaScript -2";
+
+        document.body.appendChild(newPara2)
+    </script>
+
+</body>
+</html>

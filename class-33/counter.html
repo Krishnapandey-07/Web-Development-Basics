@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="count">0</h2>
+
+<button id="inc">Increase</button>
+<button id="dec">Decrease</button>
+<button id="reset">Reset</button>
+
+<script>
+    let count = 0;
+
+let countText = document.querySelector("#count");
+let incBtn = document.querySelector("#inc");
+let decBtn = document.querySelector("#dec");
+let resetBtn = document.querySelector("#reset");
+
+incBtn.addEventListener("click", function () {
+    count++;
+    countText.textContent = count;
+});
+
+decBtn.addEventListener("click", function () {
+    count--;
+    countText.textContent = count;
+});
+
+resetBtn.addEventListener("click", function () {
+    count = 0;
+    countText.textContent = count;
+});
+
+</script>
+</body>
+</html>
